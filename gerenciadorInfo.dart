@@ -2,17 +2,17 @@ import 'dart:io';
 import 'dart:isolate';
 import 'Cliente.dart';
 import 'Deposito.dart';
+import 'Historico.dart';
 import 'Transferencia.dart';
 
 final String linhas = "-"*10;
 
-void infoManager({int option = 0, Cliente? cliente}){
-
+void infoManager({int option = 0, required Cliente cliente, required Historico historico}){
 
   //////////////////////
   ///Opções de escolha//                             
   //////////////////////
-  if (option == 0){print("$linhas\nMENU CAIXA ELETRÔNICO\n1- Depósito\n2- Transferência\n3- Histórico\n4- Sair\n$linhas\n$linhas");}
+  if (option == 0){print("$linhas\nMENU CAIXA ELETRÔNICO\n1- Depósito\n2- Transferência\n3- Histórico\n4- Sair\n$linhas\n$linhas\n");}
 
 
   /////////////
@@ -24,10 +24,11 @@ void infoManager({int option = 0, Cliente? cliente}){
     value = double.parse(value);
     if (cliente != null){
         Deposito deposito = new Deposito(valor: value, cliente: cliente);
-        print("Saldo antigo: R\$${cliente.saldo - value}. Saldo atual: R\$${cliente.saldo}\n$linhas\n$linhas");
+        historico.adicionar(deposito);
+        print("Saldo antigo: R\$${cliente.saldo - value}. Saldo atual: R\$${cliente.saldo}\n$linhas\n$linhas\n");
     }
     else{
-        print("Depósito inválido!\n$linhas\n$linhas");
+        print("Depósito inválido!\n$linhas\n$linhas\n");
     }
   }
 
@@ -41,19 +42,21 @@ void infoManager({int option = 0, Cliente? cliente}){
     value = double.parse(value);
     if (cliente != null){
         Transferencia transferencia = new Transferencia(valor: value, cliente: cliente);
-        print("Saldo antigo: R\$${cliente.saldo + value}. Saldo atual: R\$${cliente.saldo}\n$linhas\n$linhas");
+        historico.adicionar(transferencia);
+        print("Saldo antigo: R\$${cliente.saldo + value}. Saldo atual: R\$${cliente.saldo}\n$linhas\n$linhas\n");
     }
     else{
-        print("Transferência inválida!\n$linhas\n$linhas");
+        print("Transferência inválida!\n$linhas\n$linhas\n");
     }
   }
 
 
-  ///////////
+  //////////////
   ///Histórico//
-  ///////////
+  //////////////
   else if (option == 3){
     print("${"-"*10}\nHistórico\n${"-"*10}");
+    print(historico.historico + "\n");
   }
 
 

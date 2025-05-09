@@ -5,23 +5,30 @@
 import 'dart:io';
 
 import 'Cliente.dart';
+import 'Historico.dart';
 import 'gerenciadorInfo.dart';
-main (){
 
+main (){
     dynamic choice;
     Cliente cliente = new Cliente(usuario: "Caio");
+    Historico historico = new Historico(cliente: cliente);
     //////////////////////////
     //Sistema de comunicação//
     //////////////////////////
 
     while (choice != 4){
-      infoManager(); // Vai retornar o menu principal
+      infoManager(
+        cliente: cliente, 
+        historico: historico
+      ); 
+      // Vai retornar o menu principal
       stdout.write("Digite a sua opção: ");
       choice = stdin.readLineSync();
       choice = int.parse(choice);
       infoManager(
         option: choice,
-        cliente: cliente
+        cliente: cliente,
+        historico: historico
       );
     }
 
