@@ -9,21 +9,19 @@ import 'gerenciadorInfo.dart';
 main (){
 
     dynamic choice;
-    Cliente cliente = new Cliente("Caio");
-
+    Cliente cliente = new Cliente(usuario: "Caio");
     //////////////////////////
     //Sistema de comunicação//
     //////////////////////////
-    
-    infoManager(); // Vai retornar o menu principal
 
     while (choice != 4){
+      infoManager(); // Vai retornar o menu principal
       stdout.write("Digite a sua opção: ");
       choice = stdin.readLineSync();
       choice = int.parse(choice);
       infoManager(
         option: choice,
-        Cliente: cliente
+        cliente: cliente
       );
     }
 
