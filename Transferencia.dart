@@ -1,11 +1,11 @@
 import 'Cliente.dart';
 
-class Deposito {
+class Transferencia {
   double valor;
   Cliente cliente;
-  Deposito({required this.valor, required this.cliente}){
+  Transferencia({required this.valor, required this.cliente}){
     if (this.valor >= 0){
-      cliente.saldo =  valor;
+      cliente.saldo = -valor;
     }
     else {
       cliente.saldo = 0;
