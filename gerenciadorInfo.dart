@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:isolate';
 import 'Cliente.dart';
 import 'Deposito.dart';
 import 'Historico.dart';
@@ -12,7 +11,7 @@ void infoManager({int option = 0, required Cliente cliente, required Historico h
   //////////////////////
   ///Opções de escolha//                             
   //////////////////////
-  if (option == 0){print("$linhas\nMENU CAIXA ELETRÔNICO\n1- Depósito\n2- Transferência\n3- Histórico\n4- Sair\n$linhas\n$linhas\n");}
+  if (option == 0){print("$linhas\nMENU CAIXA ELETRÔNICO - USUÁRIO ${(cliente.usuario).toUpperCase()}\n1- Depósito\n2- Transferência\n3- Histórico\n4- Sair\n$linhas\n$linhas\n");}
 
 
   /////////////
@@ -22,14 +21,9 @@ void infoManager({int option = 0, required Cliente cliente, required Historico h
     stdout.write("$linhas\n$linhas\nDepósito\nInsira o valor para depósito: R\$ ");
     dynamic value = stdin.readLineSync();
     value = double.parse(value);
-    if (cliente != null){
-        Deposito deposito = new Deposito(valor: value, cliente: cliente);
-        historico.adicionar(deposito);
-        print("Saldo antigo: R\$${cliente.saldo - value}. Saldo atual: R\$${cliente.saldo}\n$linhas\n$linhas\n");
-    }
-    else{
-        print("Depósito inválido!\n$linhas\n$linhas\n");
-    }
+    Deposito deposito = new Deposito(valor: value, cliente: cliente);
+    historico.adicionar(deposito);
+    print("Saldo antigo: R\$${cliente.saldo - value}. Saldo atual: R\$${cliente.saldo}\n$linhas\n$linhas\n");
   }
 
 
@@ -37,17 +31,12 @@ void infoManager({int option = 0, required Cliente cliente, required Historico h
   ///Transferência//
   //////////////////
   else if (option == 2){
-   stdout.write("$linhas\n$linhas\nDepósito\nInsira o valor para transferência: R\$ ");
+   stdout.write("$linhas\n$linhas\nTransferência\nInsira o valor para transferência: R\$ ");
     dynamic value = stdin.readLineSync();
     value = double.parse(value);
-    if (cliente != null){
-        Transferencia transferencia = new Transferencia(valor: value, cliente: cliente);
-        historico.adicionar(transferencia);
-        print("Saldo antigo: R\$${cliente.saldo + value}. Saldo atual: R\$${cliente.saldo}\n$linhas\n$linhas\n");
-    }
-    else{
-        print("Transferência inválida!\n$linhas\n$linhas\n");
-    }
+    Transferencia transferencia = new Transferencia(valor: value, cliente: cliente);
+    historico.adicionar(transferencia);
+    print("Saldo antigo: R\$${cliente.saldo + value}. Saldo atual: R\$${cliente.saldo}\n$linhas\n$linhas\n");
   }
 
 

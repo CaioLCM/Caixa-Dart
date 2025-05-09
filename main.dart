@@ -3,14 +3,14 @@
 // FUNÇÕES
 // 3 BRANCHES
 import 'dart:io';
-
 import 'Cliente.dart';
 import 'Historico.dart';
 import 'gerenciadorInfo.dart';
 
 main (){
+
     dynamic choice;
-    Cliente cliente = new Cliente(usuario: "Caio");
+    Cliente cliente = new Cliente(usuario: "User default");
     Historico historico = new Historico(cliente: cliente);
     //////////////////////////
     //Sistema de comunicação//

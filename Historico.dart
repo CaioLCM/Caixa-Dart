@@ -9,12 +9,10 @@ class Historico {
   Historico({required this.cliente});
   void adicionar(Object action){
     if (action is Transferencia){
-      print("Transferência adicionada");
       _historico.add("${_contador}- Transferência no valor de ${action.valor} - Saldo antes: ${cliente.saldo + action.valor} -- Saldo depois: ${cliente.saldo}");
       _contador ++;
     }
     else if (action is Deposito){
-      print("Depósito adicionado");
        _historico.add("${_contador}- Depósito no valor de ${action.valor} - Saldo antes: ${cliente.saldo - action.valor} -- Saldo depois: ${cliente.saldo}");
       _contador ++;
     }
