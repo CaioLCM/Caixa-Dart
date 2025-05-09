@@ -12,7 +12,7 @@ void infoManager({int option = 0, Cliente? cliente}){
   //////////////////////
   ///Opções de escolha//                             
   //////////////////////
-  if (option == 0){print("$linhas\nMENU CAIXA ELETRÔNICO\n1- Depósito\n2- Transferência\n3- Fatura\n4- Sair\n$linhas\n$linhas");}
+  if (option == 0){print("$linhas\nMENU CAIXA ELETRÔNICO\n1- Depósito\n2- Transferência\n3- Histórico\n4- Sair\n$linhas\n$linhas");}
 
 
   /////////////
@@ -50,10 +50,10 @@ void infoManager({int option = 0, Cliente? cliente}){
 
 
   ///////////
-  ///Fatura//
+  ///Histórico//
   ///////////
   else if (option == 3){
-    print("${"-"*10}\nFatura\n${"-"*10}");
+    print("${"-"*10}\nHistórico\n${"-"*10}");
   }
 
 
