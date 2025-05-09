@@ -11,7 +11,7 @@ void infoManager({int option = 0, required Cliente cliente, required Historico h
   //////////////////////
   ///Opções de escolha//                             
   //////////////////////
-  if (option == 0){print("$linhas\nMENU CAIXA ELETRÔNICO - USUÁRIO ${(cliente.usuario).toUpperCase()}\n1- Depósito\n2- Transferência\n3- Histórico\n4- Sair\n$linhas\n$linhas\n");}
+  if (option == 0){print("$linhas\nMENU CAIXA ELETRÔNICO - USUÁRIO ${(cliente.usuario).toUpperCase()} - SALDO: R\$${cliente.saldo}\n1- Depósito\n2- Transferência\n3- Histórico\n4- Sair\n$linhas\n$linhas\n");}
 
 
   /////////////
