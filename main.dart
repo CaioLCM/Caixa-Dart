@@ -3,19 +3,32 @@
 // FUNÇÕES
 // 3 BRANCHES
 import 'dart:io';
+import 'Cliente.dart';
+import 'Historico.dart';
+import 'gerenciadorInfo.dart';
 
-void infoManager({int option = 0}){
-  if (option == 0){print("${"-"*10}\nMENU CAIXA ELETRONICO\n1- Depósito\n2- Transferência\n3- Fatura\n4- Sair\n${"-"*10}");}
-  else if (option == 1){
-    print("");
-  }
-}
 main (){
-  dynamic choice;
-  while (choice != 4){
-    infoManager();
-    choice = stdin.readLineSync();
-    choice = int.parse(choice);
-  }
-  print("${"-"*10}\nAté a próxima!");
+
+    dynamic choice;
+    Cliente cliente = new Cliente(usuario: "User default");
+    Historico historico = new Historico(cliente: cliente);
+    //////////////////////////
+    //Sistema de comunicação//
+    //////////////////////////
+
+    while (choice != 4){
+      infoManager(
+        cliente: cliente, 
+        historico: historico
+      ); 
+      // Vai retornar o menu principal
+      stdout.write("Digite a sua opção: ");
+      choice = stdin.readLineSync();
+      choice = int.parse(choice);
+      infoManager(
+        option: choice,
+        cliente: cliente,
+        historico: historico
+      );
+    }
 }
