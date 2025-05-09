@@ -2,9 +2,29 @@
 // POO
 // FUNÇÕES
 // 3 BRANCHES
-void retornarMenu(){
-  print("MENU CAIXA ELETRONICO\n1- Depósito\n2- Transferência\n3- Fatura");
-}
+import 'dart:io';
+
+import 'Cliente.dart';
+import 'gerenciadorInfo.dart';
 main (){
-    retornarMenu();
+
+    dynamic choice;
+    Cliente cliente = new Cliente("Caio");
+
+    //////////////////////////
+    //Sistema de comunicação//
+    //////////////////////////
+    
+    infoManager(); // Vai retornar o menu principal
+
+    while (choice != 4){
+      stdout.write("Digite a sua opção: ");
+      choice = stdin.readLineSync();
+      choice = int.parse(choice);
+      infoManager(
+        option: choice,
+        Cliente: cliente
+      );
+    }
+
 }
